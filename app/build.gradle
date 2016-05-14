@@ -10,6 +10,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -17,11 +18,40 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/NOTICE' // will not include NOTICE file
+        exclude 'META-INF/LICENSE' // will not include LICENSE file
+        exclude 'META-INF/BCKEY.SF' // will not include LICENSE file
+        exclude 'META-INF/BCKEY.DSA' // will not include LICENSE file
+    }
+}
+
+
+
+repositories {
+    mavenCentral()
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:design:23.1.1'
+    compile files('C:/Users/Stephan/AndroidStudioProjects/SSIConfigurationTool/libs/bcpkix-jdk15on-152.jar')
+    compile files('C:/Users/Stephan/AndroidStudioProjects/SSIConfigurationTool/libs/bcprov-jdk15on-152.jar')
+    compile files('C:/Users/Stephan/AndroidStudioProjects/SSIConfigurationTool/libs/commons-logging-1.1.1.jar')
+    compile files('C:/Users/Stephan/AndroidStudioProjects/SSIConfigurationTool/libs/httpclient-4.2.5.jar')
+    compile files('C:/Users/Stephan/AndroidStudioProjects/SSIConfigurationTool/libs/httpcore-4.2.4.jar')
+    compile files('C:/Users/Stephan/AndroidStudioProjects/SSIConfigurationTool/libs/httpcore-nio-4.2.4.jar')
+    compile files('C:/Users/Stephan/AndroidStudioProjects/SSIConfigurationTool/libs/log4j-1.2.17.jar')
+    compile files('C:/Users/Stephan/AndroidStudioProjects/SSIConfigurationTool/libs/Opc.Ua.Stack-1.02.337.8.jar')
+    compile files('C:/Users/Stephan/AndroidStudioProjects/SSIConfigurationTool/libs/Prosys-OPC-UA-Java-SDK-Client-Server-Evaluation-2.2.2-638.jar')
+    compile files('C:/Users/Stephan/AndroidStudioProjects/SSIConfigurationTool/libs/sc-core-1.52.0.0.jar')
+    compile files('C:/Users/Stephan/AndroidStudioProjects/SSIConfigurationTool/libs/scpkix-1.52.0.0.jar')
+    compile files('C:/Users/Stephan/AndroidStudioProjects/SSIConfigurationTool/libs/scprov-1.52.0.0.jar')
+    compile files('C:/Users/Stephan/AndroidStudioProjects/SSIConfigurationTool/libs/slf4j-api-1.7.7.jar')
+    compile files('C:/Users/Stephan/AndroidStudioProjects/SSIConfigurationTool/libs/slf4j-log4j12-1.7.7.jar')
+    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:design:23.3.0'
+    compile 'com.android.support:support-v4:23.3.0'
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
 }
